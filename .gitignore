@@ -1,0 +1,4 @@
+creds.data
+config
+lambda-function/node_modules
+dist/

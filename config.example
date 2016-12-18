@@ -1,0 +1,7 @@
+INVOCATION_NAME="tiger"
+HTTP_EXECUTION_URL="https://0000ABC123.execute-api.us-east-1.amazonaws.com/prod/google-action-tiger"
+LAMBDA_FUNCTION_NAME="google-action-$INVOCATION_NAME"
+VISTA_ICM_ADDRESS="http://vistaicm.houseAddress.com:2452"
+VISTA_ICM_COMMAND_ARM="F1"
+VISTA_ICM_COMMAND_DISARM="1-2-3-4-1"
+VISTA_ICM_COMMAND_PANIC="F3"

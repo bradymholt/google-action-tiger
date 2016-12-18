@@ -1,0 +1,91 @@
+{
+  "name": "actionPackages/9960971",
+  "deploymentStatus": {
+    "state": "NEW",
+    "previewEndTime": "2016-12-17T16:15:19.458236Z"
+  },
+  "versionLabel": "API.AI generated package for agent HouseBot",
+  "agentInfo": {
+    "languageCode": "en-US",
+    "projectId": "08f738629b0b6368493346964c66bb02",
+    "invocationNames": [
+      "tiger"
+    ],
+    "voiceName": "female_1",
+    "logoUrl": "https://static.api.ai/assets/images/logo.png"
+  },
+  "actions": [
+    {
+      "description": "alarm.status",
+      "initialTrigger": {
+        "intent": "assistant.intent.action.MAIN",
+        "queryPatterns": [
+          {
+            "queryPattern": "to $status:status the alarm"
+          },
+          {
+            "queryPattern": "$status:status the alarm"
+          },
+          {
+            "queryPattern": "to $status:status"
+          }
+        ]
+      },
+      "inDialogTriggers": [
+        {
+          "intent": "30b8ddd7-fe4e-4bfc-be79-e86c429f227f",
+          "queryPatterns": [
+            {
+              "queryPattern": "to $status:status the alarm"
+            },
+            {
+              "queryPattern": "$status:status the alarm"
+            },
+            {
+              "queryPattern": "to $status:status"
+            }
+          ]
+        },
+        {
+          "intent": "RAW_TEXT",
+          "queryPatterns": [
+            {
+              "queryPattern": "$SchemaOrg_Text:text"
+            }
+          ]
+        }
+      ],
+      "httpExecution": {
+        "url": "https://0000ABC123.execute-api.us-east-1.amazonaws.com/prod/tiger"
+      },
+      "signInRequired": false
+    }
+  ],
+  "customTypes": [
+    {
+      "name": "$status",
+      "items": [
+        {
+          "key": "disarm",
+          "synonyms": [
+            "disarm"
+          ]
+        },
+        {
+          "key": "arm",
+          "synonyms": [
+            "arm"
+          ]
+        },
+        {
+          "key": "panic",
+          "synonyms": [
+            "panic",
+            "emergency"
+          ]
+        }
+      ],
+      "isDynamicDefined": true
+    }
+  ]
+}
