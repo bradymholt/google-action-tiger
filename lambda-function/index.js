@@ -58,7 +58,7 @@ exports.handler = function (event, context, callback) {
         if (side == "left") {
             commandUrl = commandUrl + vistaIcmCommandLeftGarage;
             tellSpeech = "Left door engaged.";
-        } else if (status == "right") {
+        } else if (side == "right") {
             commandUrl = commandUrl + vistaIcmCommandRightGarage;
             tellSpeech = "Right door engaged.";
         }
