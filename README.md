@@ -1,6 +1,6 @@
 # google-action-tiger
 
-A Google Assistant Action (with an invocation name of "tiger") which controls my Honeywell VISTA-20P alarm panel
+A Google Assistant Action (with an invocation name of "tiger") which controls a Honeywell VISTA-20P alarm panel and opens/closes garage doors
 
 ## Initial Setup
 
@@ -46,6 +46,8 @@ Rename the `config.example` file to `config` and update the config values
 - VISTA_ICM_COMMAND_ARM - The vistaicm-server command to arm the alarm
 - VISTA_ICM_COMMAND_DISARM - The vistaicm-server command to disarm the alarm (this is the security code)
 - VISTA_ICM_COMMAND_PANIC - The vistaicm-server command to initiate the panic status
+- VISTA_ICM_COMMAND_LEFT_GARAGE - The vistaicm-server command to trigger the left garage door to open/close
+- VISTA_ICM_COMMAND_RIGHT_GARAGE - The vistaicm-server command to trigger the left garage door to open/close
 
 ## Deploy
 

@@ -7,7 +7,7 @@ mkdir -p dist
 # Create dist/action.json with httpExecution.url set from config
 echo "Setting httpExecution.url and generating action.json..."
 rm -f dist/action.json
-node -e "var action = require('./action.json'); action.actions[0].httpExecution.url = '$HTTP_EXECUTION_URL'; require('fs').writeFileSync('./dist/action.json', JSON.stringify(action));"
+node -e "var action = require('./action.json'); for(var a of action.actions) { a.httpExecution.url = '$HTTP_EXECUTION_URL'; } require('fs').writeFileSync('./dist/action.json', JSON.stringify(action));"
 
 # Deploy the Google Assistant Action
 echo "Deploying action package to Google Assistant..."
@@ -30,6 +30,8 @@ aws lambda update-function-configuration --function-name $LAMBDA_FUNCTION_NAME -
     VISTA_ICM_ADDRESS=$VISTA_ICM_ADDRESS,\
     VISTA_ICM_COMMAND_ARM=$VISTA_ICM_COMMAND_ARM,\
     VISTA_ICM_COMMAND_DISARM=$VISTA_ICM_COMMAND_DISARM,\
-    VISTA_ICM_COMMAND_PANIC=$VISTA_ICM_COMMAND_PANIC}"
+    VISTA_ICM_COMMAND_PANIC=$VISTA_ICM_COMMAND_PANIC,\
+    VISTA_ICM_COMMAND_LEFT_GARAGE=$VISTA_ICM_COMMAND_LEFT_GARAGE,\
+    VISTA_ICM_COMMAND_RIGHT_GARAGE=$VISTA_ICM_COMMAND_RIGHT_GARAGE}"
 
 echo "Deploy successful!"

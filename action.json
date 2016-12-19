@@ -1,10 +1,10 @@
 {
-  "name": "actionPackages/9960971",
+  "name": "actionPackages/9980973",
   "deploymentStatus": {
     "state": "NEW",
-    "previewEndTime": "2016-12-17T16:15:19.458236Z"
+    "previewEndTime": "2016-12-19T04:32:26.512249Z"
   },
-  "versionLabel": "API.AI generated package for agent HouseBot",
+  "versionLabel": "API.AI generated package for agent tiger",
   "agentInfo": {
     "languageCode": "en-US",
     "projectId": "08f738629b0b6368493346964c66bb02",
@@ -16,61 +16,54 @@
   },
   "actions": [
     {
-      "description": "alarm.status",
+      "description": "Default Welcome Intent",
       "initialTrigger": {
         "intent": "assistant.intent.action.MAIN",
-        "queryPatterns": [
-          {
-            "queryPattern": "to $status:status the alarm"
-          },
-          {
-            "queryPattern": "$status:status the alarm"
-          },
-          {
-            "queryPattern": "to $status:status"
-          }
-        ]
+        "queryPatterns": []
       },
-      "inDialogTriggers": [
-        {
-          "intent": "30b8ddd7-fe4e-4bfc-be79-e86c429f227f",
-          "queryPatterns": [
-            {
-              "queryPattern": "to $status:status the alarm"
-            },
-            {
-              "queryPattern": "$status:status the alarm"
-            },
-            {
-              "queryPattern": "to $status:status"
-            }
-          ]
-        },
-        {
-          "intent": "RAW_TEXT",
-          "queryPatterns": [
-            {
-              "queryPattern": "$SchemaOrg_Text:text"
-            }
-          ]
-        }
-      ],
       "httpExecution": {
-        "url": "https://0000ABC123.execute-api.us-east-1.amazonaws.com/prod/tiger"
+        "url": "https://api.api.ai/api/integrations/google?token\u003d0dd553c6abca41bc9a1b5889d146c164\u0026lang\u003den-US"
+      }      
+    },
+    {
+      "description": "alarm",
+      "initialTrigger": {
+        "intent": "ALARM",
+        "queryPatterns": [
+            {
+              "queryPattern": "to $alarm-status:alarm-status"
+            },
+            {
+              "queryPattern": "to $alarm-status:alarm-status the alarm"
+            },
+            {
+              "queryPattern": "$alarm-status:alarm-status the alarm"
+            }
+          ]
       },
-      "signInRequired": false
+      "httpExecution": {
+        "url": "https://api.api.ai/api/integrations/google?token\u003d0dd553c6abca41bc9a1b5889d146c164\u0026lang\u003den-US"
+      }  
+    },
+    {
+      "description": "garage",
+      "initialTrigger": {
+        "intent": "GARAGE",
+        "queryPatterns": [
+            {
+               "queryPattern": "$garage-status:garage-status the $garage-side:garage-side garage (door)?"
+            }           
+          ]
+      },
+      "httpExecution": {
+        "url": "https://api.api.ai/api/integrations/google?token\u003d0dd553c6abca41bc9a1b5889d146c164\u0026lang\u003den-US"
+      }  
     }
   ],
   "customTypes": [
     {
-      "name": "$status",
+      "name": "$alarm-status",
       "items": [
-        {
-          "key": "disarm",
-          "synonyms": [
-            "disarm"
-          ]
-        },
         {
           "key": "arm",
           "synonyms": [
@@ -78,14 +71,52 @@
           ]
         },
         {
+          "key": "disarm",
+          "synonyms": [
+            "disarm"
+          ]
+        },
+        {
           "key": "panic",
           "synonyms": [
-            "panic",
-            "emergency"
+            "panic"
           ]
         }
-      ],
-      "isDynamicDefined": true
+      ] 
+    },
+    {
+      "name": "$garage-status",
+      "items": [
+        {
+          "key": "open",
+          "synonyms": [
+            "open"
+          ]
+        },
+        {
+          "key": "close",
+          "synonyms": [
+            "close"
+          ]
+        }
+      ]      
+    },
+    {
+      "name": "$garage-side",
+      "items": [
+        {
+          "key": "left",
+          "synonyms": [
+            "left"
+          ]
+        },
+        {
+          "key": "right",
+          "synonyms": [
+            "right"
+          ]
+        }
+      ]      
     }
   ]
 }

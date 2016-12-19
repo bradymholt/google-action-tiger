@@ -10,14 +10,22 @@ exports.handler = function (event, context, callback) {
     const vistaIcmCommandArm = process.env.VISTA_ICM_COMMAND_ARM;
     const vistaIcmCommandDisarm = process.env.VISTA_ICM_COMMAND_DISARM;
     const vistaIcmCommandPanic = process.env.VISTA_ICM_COMMAND_PANIC;
+    const vistaIcmCommandLeftGarage = process.env.VISTA_ICM_COMMAND_LEFT_GARAGE;
+    const vistaIcmCommandRightGarage = process.env.VISTA_ICM_COMMAND_RIGHT_GARAGE;
 
     var assistantRequest = new AssistantRequest(event);
     var assistantResponse = new AssistantResponse();
 
-    function handleAssistantRequest(assistant) {
+    var commandUrl = vistaIcmAddress + "/execute?command=";
 
-        var status = assistant.getArgument("status");
-        var commandUrl = vistaIcmAddress + "/execute?command=";
+    function mainIntent(assistant) {
+        assistant.tell("You can say something like tell tiger to arm the alarm or tell tiger to open the left garage door.");
+        returnLambdaResponse(assistantResponse, context);
+    }
+
+    function alarmIntent(assistant) {
+
+        var status = assistant.getArgument("alarm-status");
         var tellSpeech = null;
 
         if (status == "arm") {
@@ -29,6 +37,30 @@ exports.handler = function (event, context, callback) {
         } else if (status == "panic") {
             commandUrl = commandUrl + vistaIcmCommandPanic;
             tellSpeech = "Panic!";
+        }
+
+        console.log("GET " + commandUrl);
+        http.get(commandUrl, (response) => {
+            assistant.tell(tellSpeech);
+            returnLambdaResponse(assistantResponse, context);
+        }).on('error', (e) => {
+            console.log(`Error: ${e.message}`);
+            assistant.tell("Sorry, there was an error when trying to communicate with the house.");
+            returnLambdaResponse(assistantResponse, context);
+        });
+    }
+
+    function garageIntent(assistant) {
+
+        var side = assistant.getArgument("garage-side");
+        var tellSpeech = null;
+
+        if (side == "left") {
+            commandUrl = commandUrl + vistaIcmCommandLeftGarage;
+            tellSpeech = "Left door engaged.";
+        } else if (status == "right") {
+            commandUrl = commandUrl + vistaIcmCommandRightGarage;
+            tellSpeech = "Right door engaged.";
         }
 
         console.log("GET " + commandUrl);
@@ -59,5 +91,11 @@ exports.handler = function (event, context, callback) {
 
     var ActionsSdkAssistant = require('actions-on-google').ActionsSdkAssistant;
     var assistant = new ActionsSdkAssistant({ request: assistantRequest, response: assistantResponse });
-    assistant.handleRequest(handleAssistantRequest);
+    var actionMap = new Map();
+    
+    actionMap.set(assistant.StandardIntents.MAIN, mainIntent);
+    actionMap.set("ALARM", alarmIntent);
+    actionMap.set("GARAGE", garageIntent);
+
+    assistant.handleRequest(actionMap);
 };
