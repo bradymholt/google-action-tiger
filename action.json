@@ -51,7 +51,7 @@
         "intent": "GARAGE",
         "queryPatterns": [
             {
-               "queryPattern": "$garage-status:garage-status the $garage-side:garage-side garage (door)?"
+               "queryPattern": "$garage-status:garage-status (the)? $garage-side:garage-side (garage)? (door)?"
             }           
           ]
       },
