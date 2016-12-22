@@ -54,32 +54,3 @@ Rename the `config.example` file to `config` and update the config values
 This action is for private use only and is not published to the public Google Actions directory.  To use it on a single Google account, run the following command.
 
 `./deploy.sh`
-
-## api.ai
-
-This action was originally created as an api.ai Agent and exported.  The primary reason for this was because the Google Actions integration in api.ai only sets up the Action preview for 30 minutes and there is no way to control the `preview_mins` option sent to the Google Assistant API.
-
-Although not required, the Agent can be imported back into api.ai to allow for easy updates to the action.json file.
-
-### Import
-
-To import this action into api.ai for easier management you can do the following:
-
-1. Login to api.ai
-2. Create a new Agent called "tiger"
-3. Go to "Export and Import"
-4. Choose "Restore"
-5. Specify agent-api.ai.zip
-7. Go to Domains and turn off "Small Talk"
-
-### Export and update action.json
-
-After changes have been made in api.ai you can export the action by doing the following:
-
-1. Go to Integrations
-2. Turn on "Actions on Google" integration
-3. Enter "tiger" for invocation name
-4. Click Authorize
-5. Open dev console (Network tab) and then click "Preview"
-6. Copy the response from the XHR request to https://console.api.ai/api/agent/googleassistant/preview
-7. Replace contents of action.json in this repo
