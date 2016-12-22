@@ -70,11 +70,7 @@ To import this action into api.ai for easier management you can do the following
 3. Go to "Export and Import"
 4. Choose "Restore"
 5. Specify agent-api.ai.zip
-7. Go to Domains and turn all "Small Talk"
-8. Go to Integrations
-   - Turn on "Actions on Google" integration
-   - Enter "tiger" for invocation name
-   - Click Authorize
+7. Go to Domains and turn off "Small Talk"
 
 ### Export and update action.json
 
