@@ -47,7 +47,7 @@ Rename the `config.example` file to `config` and update the config values
 - VISTA_ICM_COMMAND_DISARM - The vistaicm-server command to disarm the alarm (this is the security code)
 - VISTA_ICM_COMMAND_PANIC - The vistaicm-server command to initiate the panic status
 - VISTA_ICM_COMMAND_LEFT_GARAGE - The vistaicm-server command to trigger the left garage door to open/close
-- VISTA_ICM_COMMAND_RIGHT_GARAGE - The vistaicm-server command to trigger the left garage door to open/close
+- VISTA_ICM_COMMAND_RIGHT_GARAGE - The vistaicm-server command to trigger the right garage door to open/close
 
 ## Deploy
 
