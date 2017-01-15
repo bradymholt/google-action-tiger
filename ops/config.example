@@ -1,0 +1,8 @@
+[server]
+0.0.0.0
+
+[all:vars]
+deploy_user=jdoe
+gh_pubkey_user=johndoe
+app_name=google-action-tiger
+deploy_directory="/home/{{ deploy_user }}/apps/{{ app_name }}"

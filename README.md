@@ -10,8 +10,7 @@ A Google Assistant Action (with an invocation name of "tiger") which controls a 
 2. Google account
 3. Download and install [gactions CLI](https://developers.google.com/actions/tools/gactions-cli)
 4. Download and install [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
-5. zip (`brew install zip`)
-6. A working and Internet accessible installation of [vistaicm-server](https://github.com/bradyholt/vistaicm-server)
+5. A working and Internet accessible installation of [vistaicm-server](https://github.com/bradyholt/vistaicm-server)
 
 ### Lambda function
 
