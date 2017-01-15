@@ -5,6 +5,12 @@
     - git
     - nodejs
 
+- name: Download and install gactions
+  get_url:
+    url: https://dl.google.com/gactions/updates/bin/linux/amd64/gactions/gactions
+    dest: /usr/local/bin/
+    mode: u+rwx,g+rx,o+x
+
 - name: Create deploy_directory directory
   file: path={{ deploy_directory }} state=directory owner={{ deploy_user }} group={{ deploy_user }} mode=0775
 
@@ -12,12 +18,6 @@
   git:
     repo: https://github.com/bradyholt/google-action-tiger.git
     dest: "{{ deploy_directory }}"
-
-- name: Download gactions
-  get_url:
-    url: https://dl.google.com/gactions/updates/bin/linux/amd64/gactions/gactions
-    dest: "{{ deploy_directory }}/gactions"
-    mode: u+rwx,g+rx,o+x
 
 - name: Copy config file
   copy:
