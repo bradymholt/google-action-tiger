@@ -59,9 +59,8 @@ To deploy the AWS Lambda function and the Google Assistant Action (in preview mo
 Even if a very long `preview_mins` value is provided when previewing the action, there is a limit to the preview duration and the action will eventually stop working.  So, the `preview_refresher` directory contains an Ansible playbook that will provision a server to run `gactions preview ...` with a cron job every 24 hours.  This way the Action will be available in preview mode indefinitely.  To provision a server as a Preview Refresher:
 
 1. Copy the `preview-refresher/config.example` file to a new file named `preview-refresher/config` and update the config values:
-
-- [server] - On the line immediately following the `[server]` block, replace `0.0.0.0` and provide the IP address for the target server
-- deploy_user - The name of the user on <the></the> targer server under which the Preview Refresher will be installed
-- deploy_directory - The directory on the target server to use for installation
+ - [server] - On the line immediately following the `[server]` block, replace `0.0.0.0` and provide the IP address for the target server
+ - deploy_user - The name of the user on <the></the> targer server under which the Preview Refresher will be installed
+ - deploy_directory - The directory on the target server to use for installation
 
 2. Run `./preview-refresher/provision.sh`
