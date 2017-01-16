@@ -7,7 +7,7 @@
 
 - name: Download and install gactions
   get_url:
-    url: https://dl.google.com/gactions/updates/bin/linux/amd64/gactions/gactions
+    url: "{{ gactions_download_url }}"
     dest: /usr/local/bin/
     mode: u+rwx,g+rx,o+x
 
@@ -16,7 +16,7 @@
 
 - name: Clone google-action-tiger repository
   git:
-    repo: https://github.com/bradyholt/google-action-tiger.git
+    repo: "{{ repo_url }}"
     dest: "{{ deploy_directory }}"
 
 - name: Copy config file
@@ -38,5 +38,5 @@
     group: "{{ deploy_user }}"
 
 - name: Setup daily cron job
-  cron: name="Google Action Tiger Preview" user="{{ deploy_user }}" minute="0" hour="2"
-    job="/bin/bash -l -c 'cd {{ deploy_directory }} && git pull && ./deploy-google-assistant.sh'"
+  cron: name="Google Action Tiger Preview" user="{{ deploy_user }}" minute="{{ cron_minute }}" hour="{{ cron_hour }}"
+    job="/bin/bash -l -c 'cd {{ deploy_directory }} && git pull && ./{{ deploy_command }}'"
