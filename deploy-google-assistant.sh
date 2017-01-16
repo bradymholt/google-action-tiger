@@ -11,4 +11,4 @@ node -e "var action = require('./action.json'); for(var a of action.actions) { a
 
 # Deploy the Google Assistant Action
 echo "Deploying action package to Google Assistant..."
-gactions preview --action_package dist/action.json --invocation_name $INVOCATION_NAME --preview_mins 999999
+gactions preview --action_package dist/action.json --invocation_name $INVOCATION_NAME --preview_mins 1440
