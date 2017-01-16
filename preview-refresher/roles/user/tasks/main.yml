@@ -1,2 +1,2 @@
-- name: add deploy_user user
+- name: Add deploy_user user
   user: name={{ deploy_user }} shell=/bin/bash append=true

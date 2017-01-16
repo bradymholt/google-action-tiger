@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ansible-playbook -i ./ops/config ./ops/provision.yml
+ansible-playbook -i ./preview-refresher/config ./preview-refresher/provision.yml
