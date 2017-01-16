@@ -1,6 +1,6 @@
 # google-action-tiger
 
-A Google Assistant Action (with an invocation name of "tiger") which controls a Honeywell VISTA-20P alarm panel and opens/closes garage doors
+A Google Assistant Action (with an invocation name of "tiger") which controls a Honeywell VISTA-20P alarm panel and opens/closes garage doors.  This Action is for private use only and is not published to the public Google Assistant directory. 
 
 ## Initial Setup
 
@@ -36,7 +36,7 @@ Although I would like to script the intial creation of the AWS Lambda function a
 
 ### Config
 
-Rename the `config.example` file to `config` and update the config values
+Copy the `config.example` file to a new file named `config` and update the config values:
 
 - INVOCATION_NAME - The word used to initiate a conversation with the Google Action
 - HTTP_EXECUTION_URL - The AWS API Gateway URL that points to the AWS Lambda function
@@ -50,6 +50,18 @@ Rename the `config.example` file to `config` and update the config values
 
 ## Deploy
 
-This action is for private use only and is not published to the public Google Actions directory.  To use it on a single Google account, run the following command.
+To deploy the AWS Lambda function and the Google Assistant Action (in preview mode for 24 hours), run the following command:
 
 `./deploy.sh`
+
+## Preview Refresher
+
+Even if a very long `preview_mins` value is provided when previewing the action, there is a limit to the preview duration and the action will eventually stop working.  So, the `preview_refresher` directory contains an Ansible playbook that will provision a server to run `gactions preview ...` with a cron job every 24 hours.  This way the Action will be available in preview mode indefinitely.  To provision a server as a Preview Refresher:
+
+1. Copy the `preview-refresher/config.example` file to a new file named `preview-refresher/config` and update the config values:
+
+- [server] - On the line immediately following the `[server]` block, replace `0.0.0.0` and provide the IP address for the target server
+- deploy_user - The name of the user on <the></the> targer server under which the Preview Refresher will be installed
+- deploy_directory - The directory on the target server to use for installation
+
+2. Run `./preview-refresher/provision.sh`

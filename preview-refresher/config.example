@@ -1,0 +1,6 @@
+[server]
+0.0.0.0
+
+[all:vars]
+deploy_user=jdoe
+deploy_directory="/home/{{ deploy_user }}/apps/google-action-tiger"
