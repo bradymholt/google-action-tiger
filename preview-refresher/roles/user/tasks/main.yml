@@ -1,2 +1,2 @@
 - name: Add deploy_user user
-  user: name={{ deploy_user }} shell=/bin/bash append=true
+  user: name={{ deploy_user }} groups='{{ deploy_user }},syslog' shell=/bin/bash append=true

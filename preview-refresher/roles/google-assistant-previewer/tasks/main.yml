@@ -8,7 +8,7 @@
 - name: Download and install gactions
   get_url:
     url: "{{ gactions_download_url }}"
-    dest: /usr/local/bin/
+    dest: /usr/bin/
     mode: u+rwx,g+rx,o+x
 
 - name: Create deploy_directory directory
@@ -39,4 +39,4 @@
 
 - name: Setup daily cron job
   cron: name="Google Action Tiger Preview" user="{{ deploy_user }}" minute="{{ cron_minute }}" hour="{{ cron_hour }}"
-    job="/bin/bash -l -c 'cd {{ deploy_directory }} && git pull && ./{{ deploy_command }}'"
+    job="cd {{ deploy_directory }} && git pull && ./{{ deploy_command }}"
