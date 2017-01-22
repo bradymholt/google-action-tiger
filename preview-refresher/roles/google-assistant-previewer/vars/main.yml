@@ -3,4 +3,4 @@ repo_url: https://github.com/bradyholt/google-action-tiger.git
 gactions_download_url: https://dl.google.com/gactions/updates/bin/linux/amd64/gactions/gactions
 deploy_command: deploy-google-assistant.sh
 cron_minute: 0
-cron_hour: 2
+cron_hour: 1
