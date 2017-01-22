@@ -1,2 +1,16 @@
 - name: Add deploy_user user
   user: name={{ deploy_user }} groups='{{ deploy_user }},syslog' shell=/bin/bash append=true
+
+- name: Set VISUAL env
+  lineinfile:
+    dest: "/home/{{ deploy_user }}/.bashrc"
+    regexp: '^export VISUAL='
+    line: 'export VISUAL=vim'
+    state: present
+
+- name: Set EDITOR env
+  lineinfile:
+    dest: "/home/{{ deploy_user }}/.bashrc"
+    regexp: '^export EDITOR='
+    line: 'export EDITOR=vim'
+    state: present
